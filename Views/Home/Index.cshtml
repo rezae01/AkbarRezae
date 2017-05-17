@@ -1,0 +1,27 @@
+@model IEnumerable<WebApplication.TestTable>  
+@using WebApplication;
+<table >
+    <thead>
+        <tr>
+            <th>شناسه</th>                      
+            <th>نام</th>  
+            <th>توضیح</th>
+            <th></th> 
+            <th></th> 
+        </tr> 
+    </thead>
+    <tbody>  
+          @foreach (var item in Model)  
+          {
+              <tr>
+                  <td>@item.Id</td>
+                  <td>@item.Name</td>
+                  <td>@item.Description</td>
+                  <td>@Html.ActionLink("ویرایش", "Edit", new { Id = @item.Id })</td>
+                  <td>@Html.ActionLink("حذف", "Delete", new { Id = @item.Id }, new { onclick="return confirm('آیا از حذف این رکورد اطمینان دارید؟');" } )</td>
+              </tr>  
+          }
+    </tbody>
+</table>
+<br/>
+@Html.ActionLink("افزودن", "Edit", new { Id = 0})
